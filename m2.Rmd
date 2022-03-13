@@ -1,0 +1,94 @@
+---
+title: 'Milestone 2: Parking Data'
+author: "Danah Dykstra, Jingyun Jia, Zhihao Lyu, Harshit Tummala"
+date: "3/13/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(shiny)
+library(sf)
+library(ggmap)
+library(spData)
+library(ggrepel)
+```
+
+```{r}
+df = read_csv("maindf.csv")
+head(df)
+```
+
+```{r}
+na_values = apply(df, 2, function(x) any(is.na(x)))
+which(na_values==TRUE)
+```
+> We use this to see if there are any columns with missing data where we would expect there not to be missing data. There doesn't seem to be any issues with our dataset as it stands.
+  
+```{r}
+# summary table to numerical values and their averages across the 5 largest cities
+cities = c("New York", "Los Angeles", "Chicago", "Houston", "Phoenix")
+states = c("New York", "California", "Illinois", "Texas", "Arizona")
+
+aggregate <- df %>% 
+  mutate(City = "All Cities", State="All States") %>% 
+  group_by(City, State) %>% 
+  summarise_if(is.numeric, mean, na.rm=TRUE)
+
+big_city_sum <- df %>% 
+  filter(City %in% cities, State %in% states) %>%
+  group_by(City, State) %>% 
+  summarise_if(is.numeric, mean, na.rm=TRUE) %>% 
+  rbind(aggregate)
+
+
+
+all_state_sum <- df %>% 
+  group_by(State) %>% 
+  summarise_if(is.numeric, mean, na.rm=TRUE) %>% 
+  mutate(State = ifelse(test = State %in% state.name, 
+                        yes = state.abb[match(State, state.name)], 
+                        no = str_replace_all(gsub(" ", "", State), "[:lower:]+", "")))
+```
+
+```{r}
+ggplot()+
+  geom_col(data=big_city_sum, aes(x = City, y = AvgTimeToPark))+
+  labs(y="Average Time to Park",
+       title = "Average Time to Park",
+       subtitle = "For the Top 5 Most Populous Cities in America")
+
+ggplot(all_state_sum)+
+  geom_point(aes(x = AvgTimeToPark, y=PercentSearching, col=State))+
+  geom_text_repel(aes(x=AvgTimeToPark, y=PercentSearching, label=State),size=2.5, max.overlaps=Inf)+
+  labs(x="Average Time to Park",
+       y="Percent Searching",
+       title = "Percent Searching for Parking vs. Average Time to Park",
+       subtitle = "For Car Owners Only")
+```
+
+```{r}
+bound_map <- df %>% 
+  st_as_sf(wkt="GeohashBounds") %>% 
+  st_set_crs(4269)
+
+point_map <- df %>% 
+  st_as_sf(wkt="Location") %>% 
+  st_set_crs(4269)
+
+select_state <- function(state){
+  us_states_temp <- us_states %>% 
+    filter(NAME == state)
+  us_states_temp
+}
+```
+
+```{r}
+ggplot()+
+  geom_sf(data = us_states, crs=4269)+
+  geom_sf(data=point_map, aes(alpha=AvgTimeToPark))+
+  labs(title = "Map of US Parking Lot Data",
+       subtitle = "Alpha by Average Time to Find Parking",
+       alpha = "Average Time to Park")
+```
