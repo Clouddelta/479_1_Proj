@@ -8,10 +8,6 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
-library(shiny)
-library(sf)
-library(ggmap)
-library(spData)
 library(ggrepel)
 ```
 
