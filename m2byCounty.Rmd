@@ -1,0 +1,77 @@
+---
+title: 'Milestone 2: Parking Data'
+author: "Danah Dykstra, Jingyun Jia, Zhihao Lyu, Harshit Tummala"
+date: "3/13/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(shiny)
+library(sf)
+library(ggmap)
+library(spData)
+library(ggrepel)
+```
+
+```{r}
+df = read_csv("maindf.csv")
+head(df)
+```
+
+```{r}
+# summary table to numerical values and their averages across the 5 largest counties
+counties = c("Los Angeles", "Cook", "Harris", "Maricopa", "San Diego")
+states = c("California", "Illinois", "Texas", "Arizona")
+
+filter_counties <- function(df){
+  df %>% 
+    select(County, State, AvgTimeToPark:AvgTotalGeohashes, PercentCar:PercentOther, POPESTIMATE2020:RNETMIG2020) %>% 
+    group_by(County, State) %>%
+    mutate_at(vars(AvgTimeToPark:AvgTotalGeohashes, PercentCar:PercentOther), mean)
+}
+
+aggregate <- df %>%
+  mutate(County = "All Counties", State="All States") %>%
+  filter_counties() %>% 
+  mutate_at(vars(POPESTIMATE2020:RNETMIG2020), sum) %>% 
+  unique()
+  
+big_county_sum <- df %>%
+  filter_counties() %>% 
+  filter(County %in% counties, State %in% states) %>%
+  rbind(aggregate) %>% 
+  unique()
+
+all_county_sum <- df %>% 
+  filter_counties() %>% 
+  mutate(State = ifelse(test = State %in% state.name, 
+                        yes = state.abb[match(State, state.name)], 
+                        no = str_replace_all(gsub(" ", "", State), "[:lower:]+", ""))) %>% 
+  unique()
+
+```
+
+
+```{r}
+ggplot()+
+  geom_col(data=big_county_sum, aes(x = County, y = AvgTimeToPark))+
+  labs(y="Average Time to Park",
+       title = "Average Time to Park",
+       subtitle = "For the Top 5 Most Populous Counties in America")
+
+ggplot()+
+  geom_col(data=big_county_sum, aes(x = County, y = PercentSearching))+
+  labs(y="Percentage of Car Owners Searching for parking",
+       title = "Searching for Parking",
+       subtitle = "For the Top 5 Most Populous Counties in America")
+
+ggplot(all_county_sum)+
+  geom_point(aes(x = AvgTimeToPark, y=POPESTIMATE2020, col=State))+
+  geom_text_repel(aes(x=AvgTimeToPark, y=POPESTIMATE2020, label=County))+
+  labs(x = "Average Time to Park",
+       y = "Population Estimate (by county 2020)",
+       title = "Population vs. Average Time to Park",
+       subtitle = "By County, colored by State")
+```
