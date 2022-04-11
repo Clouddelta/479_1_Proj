@@ -9,6 +9,8 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(ggrepel)
+library(scales)
+library(patchwork)
 ```
 
 ```{r}
@@ -50,24 +52,38 @@ all_county_sum <- df %>%
 ```
 
 
-```{r}
-ggplot()+
-  geom_col(data=big_county_sum, aes(x = County, y = AvgTimeToPark))+
-  labs(y="Average Time to Park",
-       title = "Average Time to Park",
-       subtitle = "For the Top 5 Most Populous Counties in America")
+```{r, fig.height = 6}
+some_county_sum <- all_county_sum %>% 
+  arrange(-POPESTIMATE2020) %>% 
+  head(15)
 
-ggplot()+
-  geom_col(data=big_county_sum, aes(x = County, y = PercentSearching))+
-  labs(y="Percentage of Car Owners Searching for parking",
-       title = "Searching for Parking",
-       subtitle = "For the Top 5 Most Populous Counties in America")
+some_county_sum_small <- all_county_sum %>% 
+  arrange(POPESTIMATE2020) %>%
+  head(15)
+
+p_big <- ggplot()+
+  geom_bar(data=some_county_sum, aes(y = reorder(County, POPESTIMATE2020), x = AvgTimeToPark), stat = "identity")+
+  scale_x_continuous(limits = c(0,10))+
+  labs(x = "Average time to park",
+       y = "County")
+
+p_small <- ggplot()+
+  geom_bar(data=some_county_sum_small, aes(y = reorder(County, POPESTIMATE2020), x = AvgTimeToPark), stat = "identity")+
+  labs(x = "Average time to park",
+       y = "County",
+       title = "Average Time to Park by County",
+       subtitle = "Top 15 and Bottom 15 Populated counties")
+
+p_big/p_small+
+  plot_layout(guides="collect")
 
 ggplot(all_county_sum)+
-  geom_point(aes(x = AvgTimeToPark, y=POPESTIMATE2020, col=State))+
+  geom_point(aes(x = AvgTimeToPark, y=POPESTIMATE2020, alpha = PercentSearching))+
   geom_text_repel(aes(x=AvgTimeToPark, y=POPESTIMATE2020, label=County))+
   labs(x = "Average Time to Park",
        y = "Population Estimate (by county 2020)",
        title = "Population vs. Average Time to Park",
-       subtitle = "By County, colored by State")
+       alpha = "Percent Searching",
+       subtitle = "By County, Alpha by Percentage of Drivers Searching for Parking")+
+  scale_y_continuous(label=comma)
 ```
