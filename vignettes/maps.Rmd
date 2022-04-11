@@ -10,7 +10,7 @@ library(tidyverse)
 library(ggplot2)
 library(readr)
 library(sf)
-library(ggmap)
+#library(ggmap)
 library(leaflet)
 d = read_csv('Searching_for_parking_NA.csv')
 ```
@@ -36,7 +36,7 @@ leaflet(d) %>%
   )
 ```
 
-```{r}
+```{r eval=F}
 register_google(key = "AIzaSyBW7PU2Ne1CM33WMaPreTbAImzGB22Pc6s")
 c(left = -125, bottom = 25.75, right = -67, top = 49) %>%
   get_stamenmap(zoom = 5, maptype = "toner-lite") %>%
