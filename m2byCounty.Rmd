@@ -23,32 +23,19 @@ head(df)
 counties = c("Los Angeles", "Cook", "Harris", "Maricopa", "San Diego")
 states = c("California", "Illinois", "Texas", "Arizona")
 
-filter_counties <- function(df){
+select_counties <- function(df){
   df %>% 
     select(County, State, AvgTimeToPark:AvgTotalGeohashes, PercentCar:PercentOther, POPESTIMATE2020:RNETMIG2020) %>% 
     group_by(County, State) %>%
     mutate_at(vars(AvgTimeToPark:AvgTotalGeohashes, PercentCar:PercentOther), mean)
 }
 
-aggregate <- df %>%
-  mutate(County = "All Counties", State="All States") %>%
-  filter_counties() %>% 
-  mutate_at(vars(POPESTIMATE2020:RNETMIG2020), sum) %>% 
-  unique()
-  
-big_county_sum <- df %>%
-  filter_counties() %>% 
-  filter(County %in% counties, State %in% states) %>%
-  rbind(aggregate) %>% 
-  unique()
-
 all_county_sum <- df %>% 
-  filter_counties() %>% 
+  select_counties() %>% 
   mutate(State = ifelse(test = State %in% state.name, 
                         yes = state.abb[match(State, state.name)], 
                         no = str_replace_all(gsub(" ", "", State), "[:lower:]+", ""))) %>% 
   unique()
-
 ```
 
 
@@ -70,12 +57,12 @@ p_big <- ggplot()+
 p_small <- ggplot()+
   geom_bar(data=some_county_sum_small, aes(y = reorder(County, POPESTIMATE2020), x = AvgTimeToPark), stat = "identity")+
   labs(x = "Average time to park",
-       y = "County",
-       title = "Average Time to Park by County",
-       subtitle = "Top 15 and Bottom 15 Populated counties")
+       y = "County")
 
 p_big/p_small+
-  plot_layout(guides="collect")
+  plot_layout(guides="collect")+
+  plot_annotation(title = "Average Time to Park by County",
+                   subtitle = "Top 15 and bottom 15 populous counties")
 
 ggplot(all_county_sum)+
   geom_point(aes(x = AvgTimeToPark, y=POPESTIMATE2020, alpha = PercentSearching))+
