@@ -1,0 +1,88 @@
+<mxfile host="65bd71144e">
+    <diagram id="s2reGBT5Z_Um7IWWr-_R" name="Page-1">
+        <mxGraphModel dx="1374" dy="910" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="12" style="edgeStyle=elbowEdgeStyle;shape=connector;rounded=1;html=1;exitX=0;exitY=0;exitDx=70;exitDy=40;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=16;fontColor=#000000;endArrow=classic;strokeColor=#000000;strokeWidth=2;elbow=vertical;" edge="1" parent="1" source="5" target="10">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;Map&lt;/b&gt;&lt;/font&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=none;shape=mxgraph.archimate3.event;strokeColor=#000000;strokeWidth=2;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="510" y="320" width="160" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" style="edgeStyle=none;shape=connector;rounded=1;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0;entryDx=20;entryDy=20;entryPerimeter=0;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=16;fontColor=#000000;endArrow=classic;strokeColor=#000000;strokeWidth=2;" edge="1" parent="1" source="6" target="5">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" style="edgeStyle=elbowEdgeStyle;shape=connector;rounded=1;html=1;exitX=0;exitY=0;exitDx=75;exitDy=40;exitPerimeter=0;entryX=0;entryY=0;entryDx=45;entryDy=45;entryPerimeter=0;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=16;fontColor=#000000;endArrow=classic;strokeColor=#000000;strokeWidth=2;elbow=vertical;" edge="1" parent="1" source="6" target="8">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="310" y="465"/>
+                            <mxPoint x="240" y="460"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="17" style="edgeStyle=elbowEdgeStyle;shape=connector;rounded=1;html=1;entryX=0;entryY=0;entryDx=20;entryDy=20;entryPerimeter=0;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=16;fontColor=#000000;endArrow=classic;strokeColor=#000000;strokeWidth=2;" edge="1" parent="1" source="6" target="9">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="205" y="470"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="32" style="edgeStyle=elbowEdgeStyle;shape=connector;rounded=1;html=1;exitX=0;exitY=0;exitDx=75;exitDy=40;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=16;fontColor=#000000;endArrow=classic;strokeColor=#000000;strokeWidth=2;" edge="1" parent="1" source="6" target="29">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="205" y="500"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="6" value="&lt;b&gt;Dataset&lt;/b&gt;" style="shape=display;whiteSpace=wrap;html=1;fontSize=16;fontColor=#000000;strokeColor=#000000;strokeWidth=2;fillColor=none;size=0.13333333333333333;rotation=0;flipH=1;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="320" width="150" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;Descriptive Plots&lt;br&gt;Bar/Hist...&lt;br&gt;&lt;/b&gt;&lt;/font&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=none;shape=mxgraph.archimate3.event;strokeColor=#000000;strokeWidth=2;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="510" y="420" width="220" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;data table&lt;/b&gt;&lt;/font&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=none;shape=mxgraph.archimate3.event;strokeColor=#000000;strokeWidth=2;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="510" y="545" width="160" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" style="edgeStyle=elbowEdgeStyle;shape=connector;rounded=1;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=45;entryDy=45;entryPerimeter=0;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=16;fontColor=#000000;endArrow=classic;strokeColor=#000000;strokeWidth=2;" edge="1" parent="1" source="10" target="8">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" style="edgeStyle=elbowEdgeStyle;shape=connector;rounded=1;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=20;entryDy=20;entryPerimeter=0;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=16;fontColor=#000000;endArrow=classic;strokeColor=#000000;strokeWidth=2;" edge="1" parent="1" source="10" target="9">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="420" y="500"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" value="&lt;font color=&quot;#000000&quot;&gt;&lt;b&gt;Selected&lt;br&gt;Observation&lt;/b&gt;&lt;/font&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontSize=12;fontColor=default;strokeColor=#000000;strokeWidth=2;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="290" y="390" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" style="edgeStyle=elbowEdgeStyle;shape=connector;rounded=1;html=1;exitX=0;exitY=0;exitDx=75;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=16;fontColor=#000000;endArrow=classic;strokeColor=#000000;strokeWidth=2;" edge="1" parent="1" source="28" target="29">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="205" y="650"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="28" value="&lt;b&gt;Potential Models&lt;/b&gt;" style="shape=display;whiteSpace=wrap;html=1;fontSize=16;fontColor=#000000;strokeColor=#000000;strokeWidth=2;fillColor=none;size=0.13333333333333333;rotation=0;flipH=1;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="660" width="150" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" style="edgeStyle=elbowEdgeStyle;shape=connector;rounded=1;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=30;entryDy=30;entryPerimeter=0;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=16;fontColor=#000000;endArrow=classic;strokeColor=#000000;strokeWidth=2;" edge="1" parent="1" source="29" target="34">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="&lt;font color=&quot;#000000&quot;&gt;&lt;b&gt;Model Outputs&lt;/b&gt;&lt;/font&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontSize=12;fontColor=default;strokeColor=#000000;strokeWidth=2;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="310" y="610" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" style="edgeStyle=elbowEdgeStyle;shape=connector;rounded=1;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=16;fontColor=#000000;endArrow=classic;strokeColor=#000000;strokeWidth=2;" edge="1" parent="1" source="30" target="10">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="&lt;b&gt;User&lt;br&gt;Selections&lt;br&gt;&lt;/b&gt;" style="shape=display;whiteSpace=wrap;html=1;fontSize=16;fontColor=#000000;strokeColor=#000000;strokeWidth=2;fillColor=none;size=0.13333333333333333;rotation=0;flipH=1;" vertex="1" parent="1">
+                    <mxGeometry x="70" y="390" width="110" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;model &lt;br&gt;visualization&lt;/b&gt;&lt;/font&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=none;shape=mxgraph.archimate3.event;strokeColor=#000000;strokeWidth=2;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="510" y="600" width="160" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
