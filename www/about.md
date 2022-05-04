@@ -1,5 +1,8 @@
 ## Dashboard of Parking Statistics in North America
-STAT479 2022 Spring Group 12 Project
+STAT479 2022 Spring Group 12 Project  
+Danah Dykstra, Jingyun Jia, Zhihao Lyu  
+
+Shiny App Source: [https://github.com/dcdykstra/479_1_Proj](https://github.com/dcdykstra/479_1_Proj)
 
 ### Data
 This dataset identifies areas within a city where drivers are experiencing difficulty searching for parking. Cities can use this data to identify problem areas, adjust signage, and more. Only cities with a population of more than 100,000 are included.
