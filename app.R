@@ -43,7 +43,7 @@ ui = dashboardPage(
     tabItems(
       tabItem(tabName = "intro",
         box(width = 12, status = "primary",
-          "TBD"
+            includeMarkdown("www/intro.md")
         )
       ),
       tabItem(tabName = "map",
