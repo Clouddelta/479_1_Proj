@@ -6,6 +6,7 @@ primary_colour: "#9b0000"
 logoleft_name: "images/uwcrest2.png"
 logoright_name: "images/uwcrest2.png"
 title_textsize: "100pt"
+column_numbers: 3
 output: posterdown::posterdown_html
 ---
 
@@ -25,7 +26,6 @@ library(posterdown)
   - PercentCar: Percentage of vehicles with parking issues that were cars
 - We combined this Kaggle^1^ dataset with a US Census Bureau dataset^2^ on population statistics from 2020 in order to gain further context for our analysis.
   
-
 # Exploratory Data Analysis
 
 - To start our process we began with some basic exploratory data analysis. To gain a better understanding of our EDA, please look through our Shiny App we created.
@@ -40,22 +40,20 @@ library(posterdown)
 
 <center>![Leaflet of all the parking observations in the US](images/usmap.png){height=60%, width=60%}</center>
 
-- Our Kaggle dataset^1^ also came with Geohash boundaries as well as Latitude and Longitude coordinates for each parking area. We utilized this to create a Leaflet of all the parking areas.
+- Our Kaggle dataset^1^ also came with Geohash boundaries as well as Latitude and Longitude coordinates for each parking area. We utilized this to create a Leaflet of all the parking areas. We can use this Leaflet to gain a closer look at different cities.
 
 <center>![Leaflet of New York](images/newyork.png){height=40%, width=50%}</center>
-
-- We can use this Leaflet to gain a closer look at different cities.
 
 # Statistical Analysis
 
 - Our goal is to explore the relationship between cities and parking time, evaluate variables that correlate to parking efficiency, and further assess the correlation between them. We also want to allow for a targeted root cause analysis through this visualization and derive a conclusion from it. The main explanatory variable used is coordinates (x,y), and the response variable is average parking time for each Geohash. Therefore, we decided to use Ordinary Kriging, which is a very popular approach to handle spatial data.
   - The expression of the model is simple: $Z(s)= \mu+\epsilon(s)$, where $Z(s)$ is the response variable, $s$ is the coordinate, $\mu$ is some constant, and $\epsilon(s)$ is the error term depending on the coordinate. In our case, $Z(s)$ is the average parking time.
   
-- The key goal in Ordinary Kriging is to minimize the error variance. First, we draw a tile plot among states and have a glimpse of how hard it is to park in different states.
+- The key goal in Ordinary Kriging is to minimize the error variance. We can draw a heat map among states and or cities and have a glimpse of how hard it is to park in different areas.
 
-<center>![Tile Plot from Ordinary Kriging](images/krig.png){height=100%, width=100%}</center>
+<center>![Tile Plot from Ordinary Kriging](images/houston.png){height=80%, width=80%}</center>
 
-- The coefficient is normalized, and deeper color means it is harder to park in this area. We can see that it takes the longest time to find a parking place in New York.
+- This is the map for Houston, Texas. With the Kriging method with a threshold of 0.7 you might be able to identify the most difficult area for parking. The coefficient is normalized, and deeper color means it is harder to park in this area. 
 
 # References
 
