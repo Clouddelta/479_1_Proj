@@ -70,8 +70,7 @@ plot_bar_top = function(data.selected, var, n=15) {
     ggplot() +
     geom_bar(
       aes(y = reorder(County, POPESTIMATE2020), x = !!var.quoso),
-      stat = "identity") +
-    scale_x_continuous(limits = c(0,10)) +
+      stat = "identity")+
     labs(x = var,
          y = "County",
          title = paste(var, "by County"),
